@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+// pascal triangle each line is nothing but ncr and now what we are doing is making linewise of the n level and thereafter storing all of them in an 2d vector
+long long int ncr(int n,int r)
+{
+  long long sum=1;
+  for(int i = 1; i <= r; i++){
+    sum = sum * (n - r + i) / i;
+  }
+  return sum;
+}
+vector<long long int> pascal_line_generator(int n)
+{
+  vector<long long int> ans;
+  for(int i=0;i<=n;i++)
+  {
+    ans.push_back(ncr( n,i));
+  }
+  return ans;
+}
+vector<vector<long long int>> printPascal(int n) 
+{
+  vector<vector<long long int>> ans;
+  ans.push_back({1});
+  if(n>1)
+  for(int i=1;i<n;i++)
+  {
+    ans.push_back(pascal_line_generator(i));
+  }
+  return ans;
+}
