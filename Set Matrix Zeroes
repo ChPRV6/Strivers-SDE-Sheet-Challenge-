@@ -1,0 +1,37 @@
+Question Link: https://www.codingninjas.com/codestudio/problems/set-matrix-zeros_8230862?challengeSlug=striver-sde-challenge
+Approach: First of all if there are multiple zeroes in the matrix , we need to have multiple arrays storing  x coordinate and y coordinate so we take 2 vectors and store them , later on we shall traverse them and make them zero immediately
+My Code:
+
+#include <bits/stdc++.h>
+
+void setZeros(vector<vector<int>> &matrix)
+{
+	vector<int> x_idx,y_idx;
+	for(int i=0;i<matrix.size();i++)
+	{
+		for(int j=0;j<matrix[0].size();j++)
+		{
+			if(matrix[i][j]==0)
+			{
+				x_idx.push_back(i);
+				y_idx.push_back(j);
+			}
+		}
+	}
+	for(int i=0;i<x_idx.size();i++)
+	{
+		int t=x_idx[i];
+		for(int j=0;j<matrix[0].size();j++)
+		{
+			matrix[t][j]=0;
+		}
+	}
+	for(int i=0;i<y_idx.size();i++)
+	{
+		int t=y_idx[i];
+		for(int j=0;j<matrix.size();j++)
+		{
+			matrix[j][t]=0;
+		}
+	}
+}
