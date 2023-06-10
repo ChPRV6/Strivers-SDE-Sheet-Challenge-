@@ -1,0 +1,38 @@
+int len(ListNode* head)
+{
+int l=0;
+while(head!=NULL)
+{
+l++;
+head=head->next;
+}
+return l;
+}
+class Solution {
+public:
+ListNode* reverseList(ListNode* head) {
+if(head==NULL)
+return head;
+int length,i=0;
+length=len(head);
+int arr[length];
+while(head!=NULL)
+{
+arr[i]=head->val;
+head=head->next;
+i++;
+}
+delete head;
+ListNode* y=new ListNode();
+y->val=arr[0];
+head=y;
+for(int i=1;i<length;i++)
+{
+ListNode* y=new ListNode();
+y->val=arr[i];
+y->next=head;
+head=y;
+}
+return head;
+}
+};
