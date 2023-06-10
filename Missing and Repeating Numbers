@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+
+pair<int,int> missingAndRepeating(vector<int> &arr, int n)
+{
+    pair<int,int> ans={0,0};
+    unordered_map<int,int> mp;
+    for(int i=0;i<n;i++)
+    {
+        mp[arr[i]]++;
+    }
+    for(auto it:mp)
+    {
+        if(it.second==2)
+        {
+            ans.second=it.first;
+            break;
+        }
+    }
+    sort(arr.begin(),arr.end());
+    vector<int> brr,crr(1);
+    vector<int>:: iterator st,it;
+    for(int i=0;i<n;i++)
+    brr.push_back(i+1);
+    it=set_difference(brr.begin(),brr.end(),arr.begin(),arr.end(),crr.begin());
+    for(st=crr.begin();st!=it;++st)
+    {
+        ans.first=*st;
+    }
+    return ans;
+
+	
+}
