@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+void generate(TreeNode *root,vector<int> &nums)
+{
+    if(root==NULL)
+    return ;
+    // postorder LRD
+    // Inorder LDR
+    // Preorder DLR
+    generate(root->left,nums);
+
+    generate(root->right,nums);
+    
+    nums.push_back(root->data);   
+}
+vector<int> getPostOrderTraversal(TreeNode *root)
+{
+    // Write your code here.
+     vector<int> answer;
+
+   generate(root,answer);
+
+   return answer;
+}
