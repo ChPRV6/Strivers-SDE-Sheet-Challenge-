@@ -1,0 +1,53 @@
+#include <bits/stdc++.h> 
+vector<int> slidingWindowMaximum(vector<int> &arr, int &k)
+{
+       Write your code here.
+    int N=arr.size();
+    vector<int> ans;
+     int j, max;
+ 
+    for (int i = 0; i <= N - K; i++) {
+        max = arr[i];
+ 
+        for (j = 1; j < K; j++) {
+            if (arr[i + j] > max)
+                max = arr[i + j];
+        }
+        ans.push_back(max) ;
+    }
+    return ans;
+   
+}
+*********************************************************************************************************************************************************************
+Optimized one :
+#include <bits/stdc++.h> 
+vector<int> slidingWindowMaximum(vector<int> &arr, int &k)
+{
+ vector<int> ans;
+    priority_queue<pair<int, int> > heap;
+ 
+    // Initialize the heap with the first k elements
+    for (int i = 0; i < k; i++)
+        heap.push({ arr[i], i });
+ 
+    // The maximum element in the first window
+    ans.push_back(heap.top().first);
+ 
+    // Process the remaining elements
+    for (int i = k; i < arr.size(); i++) {
+ 
+        // Add the current element to the heap
+        heap.push({ arr[i], i });
+ 
+        // Remove elements that are outside the current
+        // window
+        while (heap.top().second <= i - k)
+            heap.pop();
+ 
+        // The maximum element in the current window
+        ans.push_back(heap.top().first);
+    }
+ 
+    return ans;
+       
+}
