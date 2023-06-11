@@ -1,0 +1,49 @@
+#include <bits/stdc++.h> 
+// Stack class.
+class Stack {
+    
+public:
+    vector<int> stack;
+    int cap;
+    Stack(int capacity) {
+     cap=capacity;
+    }
+
+    void push(int num) {
+        // Write your code here.
+        if(stack.size()<=cap)
+        {
+            stack.push_back(num);
+        }
+    }
+
+    int pop() {
+        // Write your code here.
+        if(stack.size()!=0){
+            int r=stack[stack.size()-1];
+             stack.pop_back();
+             return r;
+        }
+       
+        return -1;
+    }
+    
+    int top() {
+        // Write your code here.
+        int x=stack.size();
+        if(x!=0)
+        return stack[x-1];
+        return -1;
+    }
+    
+    int isEmpty() {
+        // Write your code here.
+        return stack.size()==0;
+    }
+    
+    int isFull() {
+        // Write your code here.
+        return stack.size()==cap;
+    }
+    
+};
