@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+void generate(TreeNode *root,vector<int> &nums)
+{
+    if(root==NULL)
+    return ;
+    nums.push_back(root->data);
+
+    generate(root->left,nums);
+    
+    generate(root->right,nums);
+}
+vector<int> getPreOrderTraversal(TreeNode *root)
+{
+   vector<int> answer;
+
+   generate(root,answer);
+
+   return answer;
+}
