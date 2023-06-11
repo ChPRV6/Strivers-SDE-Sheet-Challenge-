@@ -1,0 +1,8 @@
+def reverseString(st):
+    x=st.split()
+    x.reverse()
+    ans=" ".join(x)
+    return ans
+    
+    
+	#Write your code here.
