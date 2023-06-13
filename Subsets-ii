@@ -1,0 +1,34 @@
+class Solution {
+public:
+void helper(int i,vector<int> &nums,vector<int> &temp,vector<vector<int>> &ans)
+{
+    if(i>=nums.size())
+    {
+        
+        ans.push_back(temp);
+        return ;
+    }
+    temp.push_back(nums[i]); // picking up element
+    helper(i+1,nums,temp,ans);
+
+    temp.pop_back();// not picking up
+    helper(i+1,nums,temp,ans);
+}
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+      vector<vector<int>> ans;
+      sort(nums.begin(),nums.end());
+        vector<int> temp;
+        helper(0,nums,temp,ans);
+        set<vector<int>> s;
+        for(int i=0;i<ans.size();i++)
+        {
+            s.insert(ans[i]);
+        }
+        vector<vector<int>> finale_ans;
+        for(auto i:s)
+        {
+            finale_ans.push_back(i);
+        }
+        return finale_ans;
+    }
+};
