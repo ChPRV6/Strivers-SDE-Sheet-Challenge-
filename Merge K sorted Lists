@@ -1,0 +1,29 @@
+
+class Solution {
+public:
+    ListNode* mergeKLists(vector<ListNode*>& L) {
+        if(L.size()==0)
+        return NULL;
+        vector<int> L1;
+        for(int i=0;i<L.size();i++)
+        {
+            ListNode* temp=L[i];
+            while(temp!=NULL)
+            {
+                L1.push_back(temp->val);
+                temp=temp->next;
+            }
+        }
+      if(L1.size()==0)
+      return NULL;
+
+      sort(L1.begin(),L1.end());
+      ListNode* ans=new ListNode(L1[0]);
+      ListNode* dummy=ans;
+      for(int i=1;i<L1.size();i++){
+          dummy->next=new ListNode(L1[i]);
+          dummy=dummy->next;
+      }
+      return ans;
+    }
+};
